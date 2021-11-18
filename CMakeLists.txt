@@ -1,14 +1,11 @@
-cmake_minimum_required(VERSION 3.0.0)
-project(libssh_test VERSION 0.1.0)
+cmake_minimum_required(VERSION 3.16)
+project(libssh_test VERSION 0.1)
+set(CMAKE_CXX_STANDARD 17)
 
-include(CTest)
-enable_testing()
 
-find_package(libssh REQUIRED)
+find_package(libssh)
 
-target_link_libraries(libssh_test ssh)
 add_executable(libssh_test main.cpp)
+target_link_libraries(libssh_test PRIVATE ssh)
 
-set(CPACK_PROJECT_NAME ${PROJECT_NAME})
-set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
-include(CPack)
+# add_subdirectory(external)
